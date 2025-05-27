@@ -28,7 +28,7 @@ import React from 'react';
         ],
         icon: User,
         color: 'var(--emerald-green)',
-        imageUrl:'img/Hipnosis regresiva.jpeg',
+        imageUrl:'/img/Hipnosis regresiva.jpeg',
         imageAlt: 'Conexión profunda representando la hipnosis regresiva'
       },
       'planes-fitness-wellness': {
