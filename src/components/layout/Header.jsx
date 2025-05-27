@@ -11,26 +11,32 @@ import React, { useState, useEffect } from 'react';
       const [isScrolled, setIsScrolled] = useState(false);
       const logoUrl = "https://storage.googleapis.com/hostinger-horizons-assets-prod/92554df4-791c-4c05-a62d-83b14f84264a/e25c39713e90cefc6e744488efe81370.png";
 
-      const handleScrollTo = (id) => {
-        setIsMobileMenuOpen(false);
-        document.body.style.overflow = 'auto'; // Ensure scroll is re-enabled
-
-        if (location.pathname !== '/') {
-            navigate('/');
-            setTimeout(() => {
-                const element = document.getElementById(id);
-                if (element) {
-                    element.scrollIntoView({ behavior: 'smooth' });
-                }
-            }, 200); // Increased timeout for navigation + scroll
-        } else {
-            const element = document.getElementById(id);
-            if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
-            }
-        }
+      const toggleMobileMenu = () => {
+        setIsMobileMenuOpen(prev => !prev);
       };
 
+      const handleScrollTo = (id) => {
+        if (isMobileMenuOpen) {
+          setIsMobileMenuOpen(false);
+        }
+        document.body.style.overflow = 'auto';
+
+        if (location.pathname !== '/') {
+          navigate('/');
+          setTimeout(() => {
+            const element = document.getElementById(id);
+            if (element) {
+              element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+          }, 300); 
+        } else {
+          const element = document.getElementById(id);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }
+      };
+      
       const navItems = [
         { label: 'Inicio', id: 'inicio' },
         { label: 'Sobre Mí', id: 'sobre-mí' },
@@ -51,7 +57,6 @@ import React, { useState, useEffect } from 'react';
         } else {
           document.body.style.overflow = 'auto';
         }
-        // Cleanup function to ensure body overflow is reset when component unmounts or state changes
         return () => {
           document.body.style.overflow = 'auto';
         };
@@ -59,14 +64,26 @@ import React, { useState, useEffect } from 'react';
 
 
       return (
-        <header className={`sticky top-0 z-50 transition-shadow duration-300 ${isScrolled ? 'shadow-lg' : 'shadow-md'} bg-gradient-to-r from-[#2ecc71] to-[#3498db]`}>
+        <header className={`sticky top-0 z-50 transition-shadow duration-300 ${isScrolled ? 'shadow-lg' : 'shadow-md'} bg-gradient-to-r from-[var(--emerald-green)] to-[var(--amethyst-purple)]`}>
           <div className="container mx-auto px-4 sm:px-6 py-3 flex justify-between items-center">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <Link to="/" className="flex items-center" onClick={() => {setIsMobileMenuOpen(false); if (location.pathname === '/') handleScrollTo('inicio'); else navigate('/');}}>
+              <Link 
+                to="/" 
+                className="flex items-center" 
+                onClick={() => {
+                  if (isMobileMenuOpen) setIsMobileMenuOpen(false);
+                  document.body.style.overflow = 'auto';
+                  if (location.pathname === '/') {
+                    setTimeout(() => handleScrollTo('inicio'), 50); 
+                  } else {
+                    navigate('/'); 
+                  }
+                }}
+              >
                 <img src={logoUrl} alt="Neto Lasstiri Logo" className="h-10 sm:h-12 w-auto" />
               </Link>
             </motion.div>
@@ -89,7 +106,7 @@ import React, { useState, useEffect } from 'react';
               <Button
                 variant="ghost"
                 size="icon"
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                onClick={toggleMobileMenu}
                 className="text-white hover:bg-white/20 focus:bg-white/20"
                 aria-label="Toggle menu"
               >
@@ -105,7 +122,7 @@ import React, { useState, useEffect } from 'react';
                 animate={{ opacity: 1, height: `calc(100vh - ${isScrolled ? '60px' : '68px'})` }}
                 exit={{ opacity: 0, height: 0 }}
                 transition={{ duration: 0.3, ease: "easeInOut" }}
-                className="md:hidden fixed inset-x-0 top-[60px] sm:top-[68px] h-screen bg-gradient-to-br from-[#2ecc71]/95 to-[#3498db]/95 backdrop-blur-md shadow-lg overflow-y-auto"
+                className="md:hidden fixed inset-x-0 top-[60px] sm:top-[68px] bg-gradient-to-br from-[var(--emerald-green)]/95 to-[var(--amethyst-purple)]/95 backdrop-blur-md shadow-lg overflow-y-auto"
               >
                 <nav className="flex flex-col items-center py-8 space-y-6">
                   {navItems.map((item) => (

@@ -1,172 +1,205 @@
 import React from 'react';
-    import { useParams, Link } from 'react-router-dom';
+    import { useParams, Link, Navigate } from 'react-router-dom';
     import { motion } from 'framer-motion';
     import { Button } from '@/components/ui/button';
-    import { ArrowLeft, ShoppingCart, CheckCircle, Award, Heart, Zap } from 'lucide-react';
+    import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+    import { ArrowLeft, ShoppingCart, User, Briefcase, CheckCircle, Target, Zap, Leaf, ShieldCheck, Brain, HeartHandshake, Users, Activity, Apple, Clock } from 'lucide-react';
 
-    const serviceDetailsData = {
-      "hipnosis-regresiva": {
-        title: "Hipnosis Regresiva Profunda",
-        tagline: "Desbloquea tu potencial interior y sana desde la raíz.",
-        subtitle: "Eliminación de entidades y parasitaje + Conexión Ser Luz/Yo Superior",
-        imageUrl: "https://storage.googleapis.com/hostinger-horizons-assets-prod/92554df4-791c-4c05-a62d-83b14f84264a/5e08286bc799bdcca4d5a55cba834096.png",
-        color: "#2ecc71",
-        description: "La hipnosis regresiva es una técnica terapéutica poderosa que te guía a un estado de relajación profunda para acceder a recuerdos y experiencias almacenadas en tu mente subconsciente. Este proceso puede ayudarte a identificar el origen de bloqueos emocionales, patrones de comportamiento limitantes y síntomas inexplicables. Al comprender y reprocesar estas experiencias pasadas, puedes liberar cargas emocionales, sanar traumas y fomentar una conexión más profunda con tu ser auténtico.",
+    const servicesData = {
+      'hipnosis-regresiva': {
+        title: 'Hipnosis Regresiva',
+        subtitle: 'Eliminación de entidades y parasitaje + Conexión Ser Luz/Yo Superior',
+        description: [
+          "La hipnosis regresiva es una técnica terapéutica profunda que te permite acceder a memorias y experiencias pasadas, tanto de esta vida como de posibles vidas anteriores, con el objetivo de sanar y liberar bloqueos emocionales, traumas y patrones limitantes que afectan tu presente.",
+          "A través de un estado de relajación profunda y enfoque mental, te guiaré de manera segura para explorar el origen de tus dificultades, comprender sus raíces y reprogramar creencias negativas. Este proceso no solo facilita la sanación emocional, sino que también promueve una mayor conexión con tu ser interior, tu sabiduría innata y tu propósito de vida."
+        ],
+        components: null,
         benefits: [
-          "Liberación de bloqueos emocionales y miedos.",
-          "Sanación de traumas del pasado.",
-          "Comprensión de patrones de vida recurrentes.",
-          "Mejora de la autoestima y confianza.",
-          "Conexión con tu propósito y sabiduría interior.",
-          "Reducción del estrés y la ansiedad."
+          { text: "Superación de miedos y fobias", icon: ShieldCheck },
+          { text: "Liberación de ansiedad y estrés", icon: Leaf },
+          { text: "Sanación de relaciones", icon: HeartHandshake },
+          { text: "Aumento de la autoestima y confianza", icon: Zap },
+          { text: "Conexión espiritual y claridad mental", icon: Brain }
         ],
-        process: [
-          "Consulta inicial para definir objetivos.",
-          "Inducción a un estado de relajación profunda.",
-          "Exploración guiada de recuerdos relevantes.",
-          "Reprocesamiento y liberación emocional.",
-          "Integración y fortalecimiento de recursos internos."
+        idealFor: [
+          { text: "Personas buscando sanar traumas profundos.", icon: Users },
+          { text: "Quienes desean liberarse de patrones repetitivos.", icon: Users },
+          { text: "Individuos en búsqueda de crecimiento espiritual.", icon: Users }
         ],
-        idealFor: "Personas que buscan superar traumas, fobias, ansiedad, depresión, mejorar relaciones o encontrar un mayor sentido en sus vidas."
+        icon: User,
+        color: 'var(--emerald-green)',
+        imageUrl: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80',
+        imageAlt: 'Persona meditando en un entorno sereno representando la hipnosis regresiva'
       },
-      "planes-fitness": {
-        title: "Planes Integrales de Fitness y Bienestar",
-        tagline: "Transforma tu cuerpo y mente para una vida llena de vitalidad.",
-        imageUrl: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b",
-        color: "#3498db",
-        description: "Nuestros planes de fitness y bienestar están diseñados para ir más allá del ejercicio físico. Adoptamos un enfoque holístico que integra entrenamiento personalizado, nutrición consciente y estrategias de bienestar mental para ayudarte a alcanzar tus metas de salud y longevidad. Creemos que el verdadero bienestar se logra cuando cuerpo, mente y espíritu están en armonía.",
-        benefits: [
-          "Mejora de la condición física y fuerza.",
-          "Pérdida de peso sostenible y tonificación muscular.",
-          "Aumento de los niveles de energía y vitalidad.",
-          "Reducción del estrés y mejora del estado de ánimo.",
-          "Adopción de hábitos alimenticios saludables.",
-          "Desarrollo de una mentalidad positiva y resiliente."
+      'planes-fitness-wellness': {
+        title: 'Planes Fitness/Wellness',
+        subtitle: 'Programas personalizados para longevidad y vitalidad',
+        description: [
+          "Nuestros planes de fitness y wellness están diseñados para ayudarte a alcanzar un estado óptimo de salud física y mental, promoviendo la longevidad y la vitalidad. No se trata solo de ejercicio y dieta, sino de un enfoque integral que abarca movimiento consciente, nutrición equilibrada, gestión del estrés y hábitos de vida saludables.",
+          "Trabajaremos juntos para crear un programa personalizado que se adapte a tus necesidades, objetivos y estilo de vida. Ya sea que busques mejorar tu condición física, perder peso, aumentar tu energía o simplemente adoptar un estilo de vida más saludable, te proporcionaremos las herramientas y el apoyo necesarios para lograrlo."
         ],
         components: [
-          "Evaluación inicial completa y establecimiento de metas.",
-          "Programa de entrenamiento personalizado y progresivo.",
-          "Asesoramiento nutricional adaptado a tus necesidades.",
-          "Técnicas de manejo del estrés y mindfulness.",
-          "Seguimiento regular y ajustes del plan."
+          { text: "Evaluación inicial completa", icon: CheckCircle },
+          { text: "Programa de ejercicios adaptado", icon: Activity },
+          { text: "Pautas de nutrición y alimentación consciente", icon: Apple },
+          { text: "Estrategias de manejo del estrés y mejora del sueño", icon: Brain },
+          { text: "Seguimiento y ajustes continuos", icon: Clock }
         ],
-        idealFor: "Individuos que desean mejorar su salud general, alcanzar objetivos de fitness específicos, aumentar su energía o adoptar un estilo de vida más equilibrado y saludable."
+        benefits: [
+          { text: "Mejora de la condición física general", icon: Zap },
+          { text: "Aumento de energía y vitalidad", icon: Leaf },
+          { text: "Reducción del estrés y mejora del bienestar mental", icon: ShieldCheck },
+          { text: "Adopción de hábitos saludables sostenibles", icon: HeartHandshake }
+        ],
+        idealFor: [
+          { text: "Quienes buscan mejorar su salud física y mental.", icon: Users },
+          { text: "Personas con objetivos de pérdida de peso o ganancia muscular.", icon: Users },
+          { text: "Individuos que desean un estilo de vida más activo y equilibrado.", icon: Users }
+        ],
+        icon: Briefcase,
+        color: 'var(--amethyst-purple)',
+        imageUrl: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80',
+        imageAlt: 'Persona practicando yoga al amanecer simbolizando bienestar y fitness'
       }
     };
-    
-    const sectionVariants = {
-      hidden: { opacity: 0, y: 20 },
-      visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
-    };
+
+    const SectionTitle = ({ icon: Icon, text, color }) => (
+      <div className="flex items-center mb-3 sm:mb-4">
+        <Icon size={22} smSize={24} className="mr-2.5" style={{ color }} />
+        <h3 className="text-xl sm:text-2xl font-semibold" style={{ color }}>{text}</h3>
+      </div>
+    );
+
+    const ListItem = ({ icon: Icon, text, color }) => (
+      <li className="flex items-start mb-1.5">
+        <Icon size={18} smSize={20} className="mr-2.5 mt-1 flex-shrink-0" style={{ color }} />
+        <span>{text}</span>
+      </li>
+    );
 
     const ServiceDetailPage = ({ whatsappLink }) => {
       const { serviceId } = useParams();
-      const service = serviceDetailsData[serviceId];
+      const service = servicesData[serviceId];
 
       if (!service) {
-        return (
-          <div className="container mx-auto px-6 py-16 text-center">
-            <h1 className="text-4xl font-bold mb-4">Servicio no encontrado</h1>
-            <p className="text-lg mb-8">Lo sentimos, el servicio que buscas no existe.</p>
-            <Button asChild>
-              <Link to="/" className="flex items-center justify-center gap-2">
-                <ArrowLeft size={18} /> Volver al Inicio
-              </Link>
-            </Button>
-          </div>
-        );
+        return <Navigate to="/404" replace />;
       }
-      
-      const buyServiceLink = `${whatsappLink}?text=Hola,%20estoy%20interesado%20en%20el%20servicio%20de%20${encodeURIComponent(service.title)}.%20Quisiera%20más%20información%20para%20comprar.`;
+
+      const MainIconComponent = service.icon;
+      const buyLink = `${whatsappLink}?text=Hola%2C%20estoy%20interesado%20en%20el%20servicio%3A%20${encodeURIComponent(service.title)}.`;
 
       return (
-        <motion.div 
-          className="container mx-auto px-4 md:px-6 py-12 md:py-16"
-          initial="hidden"
-          animate="visible"
-          variants={{visible: {transition: {staggerChildren: 0.1}}}}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.5 }}
+          className="container mx-auto px-4 sm:px-6 py-10 md:py-16 flex-grow"
         >
-          <motion.div variants={sectionVariants} className="mb-8">
-            <Button asChild variant="outline" className="border-[#34495e] text-[#34495e] hover:bg-[#34495e]/10">
-              <Link to="/" className="flex items-center gap-2">
-                <ArrowLeft size={18} /> Volver a Inicio
-              </Link>
-            </Button>
-          </motion.div>
-
-          <motion.header variants={sectionVariants} className="text-center mb-10 md:mb-12">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-2" style={{color: service.color}}>{service.title}</h1>
-            {service.subtitle && (
-              <p className="text-lg md:text-xl text-gray-500 font-medium mb-3">{service.subtitle}</p>
-            )}
-            <p className="text-xl md:text-2xl text-gray-600 font-light">{service.tagline}</p>
-          </motion.header>
-
-          <div className="grid md:grid-cols-5 gap-8 md:gap-12 items-start">
-            <motion.div variants={sectionVariants} className="md:col-span-3">
-              <img src={service.imageUrl} alt={service.title} className="w-full h-auto max-h-[400px] md:max-h-[500px] object-cover rounded-xl shadow-2xl mb-8" />
-              <h2 className="text-3xl font-semibold text-[#34495e] mb-4">Descripción del Servicio</h2>
-              <p className="text-lg text-gray-700 leading-relaxed mb-8">{service.description}</p>
-              
-              {service.process && (
-                <>
-                  <h3 className="text-2xl font-semibold text-[#34495e] mb-3">Proceso del Servicio</h3>
-                  <ul className="space-y-2 mb-8">
-                    {service.process.map((item, index) => (
-                      <li key={index} className="flex items-start text-gray-700">
-                        <Zap size={20} className="mr-3 mt-1 flex-shrink-0" style={{color: service.color}}/>
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </>
-              )}
-              {service.components && (
-                 <>
-                  <h3 className="text-2xl font-semibold text-[#34495e] mb-3">Componentes del Plan</h3>
-                  <ul className="space-y-2 mb-8">
-                    {service.components.map((item, index) => (
-                      <li key={index} className="flex items-start text-gray-700">
-                        <Heart size={20} className="mr-3 mt-1 flex-shrink-0" style={{color: service.color}}/>
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </>
-              )}
-
+          <div className="max-w-4xl mx-auto">
+            <motion.div 
+              className="mb-6 sm:mb-8"
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.1, duration: 0.5 }}
+            >
+              <Button variant="outline" asChild className="border-[var(--deep-purple)] text-[var(--deep-purple)] hover:bg-[var(--deep-purple)] hover:text-white">
+                <Link to="/" className="flex items-center">
+                  <ArrowLeft size={18} smSize={20} className="mr-2" /> Volver a Inicio
+                </Link>
+              </Button>
             </motion.div>
 
-            <motion.aside variants={sectionVariants} className="md:col-span-2 bg-gray-50 p-6 md:p-8 rounded-xl shadow-lg sticky top-24">
-              <h3 className="text-2xl font-semibold text-[#34495e] mb-5">Beneficios Clave</h3>
-              <ul className="space-y-3 mb-8">
-                {service.benefits.map((benefit, index) => (
-                  <li key={index} className="flex items-start text-gray-700">
-                    <CheckCircle size={20} className="mr-3 mt-1 flex-shrink-0" style={{color: service.color}} />
-                    <span>{benefit}</span>
-                  </li>
-                ))}
-              </ul>
+            <motion.div 
+              className="bg-white shadow-2xl rounded-xl overflow-hidden"
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+            >
+              <div className="p-5 sm:p-6 md:p-8">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center mb-4 sm:mb-6">
+                  {MainIconComponent && <MainIconComponent size={36} smSize={44} className="mr-3 sm:mr-4 mb-2 sm:mb-0 flex-shrink-0" style={{ color: service.color }} />}
+                  <div>
+                    <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[var(--deep-purple)]">{service.title}</h1>
+                    {service.subtitle && (
+                      <p className="text-sm sm:text-md text-gray-600 font-medium mt-0.5">{service.subtitle}</p>
+                    )}
+                  </div>
+                </div>
+                
+                <div className="my-5 sm:my-6 md:my-8">
+                  <img  
+                    className="w-full h-56 sm:h-72 md:h-96 object-cover rounded-lg shadow-md" 
+                    alt={service.imageAlt}
+                    src={service.imageUrl} 
+                  />
+                </div>
 
-              <h3 className="text-2xl font-semibold text-[#34495e] mb-3">Ideal Para</h3>
-              <p className="text-gray-700 mb-8 flex items-start">
-                <Award size={20} className="mr-3 mt-1 flex-shrink-0" style={{color: service.color}}/>
-                <span>{service.idealFor}</span>
-              </p>
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
+                  <div className="lg:col-span-2">
+                    <section className="mb-6 md:mb-8">
+                      <SectionTitle icon={Briefcase} text="Descripción del Servicio" color={service.color} />
+                      <div className="prose prose-base sm:prose-lg max-w-none text-gray-700 leading-relaxed space-y-3">
+                        {service.description.map((paragraph, index) => (
+                          <p key={index}>{paragraph}</p>
+                        ))}
+                      </div>
+                    </section>
 
-              <Button 
-                size="lg" 
-                className="w-full text-white font-semibold py-3 text-lg flex items-center justify-center gap-2"
-                style={{backgroundColor: service.color, outlineColor: service.color}}
-                onMouseOver={(e) => e.currentTarget.style.backgroundColor = `${service.color}E6`}
-                onMouseOut={(e) => e.currentTarget.style.backgroundColor = service.color}
-                asChild
-              >
-                <a href={buyServiceLink} target="_blank" rel="noopener noreferrer">
-                  <ShoppingCart size={22} /> Adquirir Servicio Ahora
-                </a>
-              </Button>
-            </motion.aside>
+                    {service.components && service.components.length > 0 && (
+                      <section className="mb-6 md:mb-8">
+                        <SectionTitle icon={CheckCircle} text="Componentes del Plan" color={service.color} />
+                        <ul className="space-y-1.5 text-gray-700">
+                          {service.components.map((item, index) => (
+                            <ListItem key={index} icon={item.icon} text={item.text} color={service.color} />
+                          ))}
+                        </ul>
+                      </section>
+                    )}
+                  </div>
+
+                  <div className="lg:col-span-1">
+                    <Card className="shadow-lg border-l-4 sticky top-24" style={{ borderColor: service.color }}>
+                      <CardHeader>
+                        <CardTitle className="text-lg sm:text-xl flex items-center" style={{ color: service.color }}>
+                          <Target size={22} smSize={24} className="mr-2.5" /> Puntos Clave
+                        </CardTitle>
+                      </CardHeader>
+                      <CardContent className="space-y-5">
+                        <div>
+                          <h4 className="font-semibold text-md sm:text-lg mb-1.5 text-gray-800">Beneficios Clave:</h4>
+                          <ul className="space-y-1 text-sm sm:text-base text-gray-600">
+                            {service.benefits.map((item, index) => (
+                              <ListItem key={index} icon={item.icon} text={item.text} color="var(--emerald-green)" />
+                            ))}
+                          </ul>
+                        </div>
+                        <div>
+                          <h4 className="font-semibold text-md sm:text-lg mb-1.5 text-gray-800">Ideal Para:</h4>
+                          <ul className="space-y-1 text-sm sm:text-base text-gray-600">
+                            {service.idealFor.map((item, index) => (
+                              <ListItem key={index} icon={item.icon} text={item.text} color="var(--amethyst-purple)" />
+                            ))}
+                          </ul>
+                        </div>
+                        <motion.div 
+                          className="mt-6 pt-4 border-t border-gray-200"
+                          initial={{ opacity:0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 0.4, duration: 0.4 }}
+                        >
+                          <Button asChild size="lg" className="w-full bg-[var(--emerald-green)] hover:bg-[#27ae60] text-white text-sm sm:text-base py-2.5 sm:py-3">
+                            <a href={buyLink} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2">
+                              <ShoppingCart size={18} smSize={20} /> Adquirir Servicio Ahora
+                            </a>
+                          </Button>
+                        </motion.div>
+                      </CardContent>
+                    </Card>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </motion.div>
       );

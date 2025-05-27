@@ -1,68 +1,74 @@
-
-    @tailwind base;
+@tailwind base;
     @tailwind components;
     @tailwind utilities;
 
     :root {
       --background: 0 0% 100%; /* White */
-      --foreground: 222.2 47.4% 11.2%; /* Dark Blue - Similar to #34495e */
+      --foreground: 271 39% 35%; /* Deep Purple - Similar to #5D3A9B, adjusted from #34495e */
 
       --card: 0 0% 100%;
-      --card-foreground: 222.2 47.4% 11.2%;
+      --card-foreground: 271 39% 35%;
     
       --popover: 0 0% 100%;
-      --popover-foreground: 222.2 47.4% 11.2%;
+      --popover-foreground: 271 39% 35%;
     
       --primary: 145 58% 52%; /* Emerald Green - #2ecc71 */
       --primary-foreground: 0 0% 98%; /* Almost White */
     
-      --secondary: 210 40% 96.1%; /* Light Grayish Blue */
-      --secondary-foreground: 222.2 47.4% 11.2%;
+      --secondary: 271 30% 96.1%; /* Light Grayish Purple */
+      --secondary-foreground: 271 39% 35%;
     
-      --muted: 210 40% 96.1%;
-      --muted-foreground: 215.4 16.3% 46.9%;
+      --muted: 271 30% 96.1%;
+      --muted-foreground: 271 10% 46.9%; /* Muted Purple */
     
-      --accent: 210 40% 96.1%;
-      --accent-foreground: 222.2 47.4% 11.2%;
+      --accent: 271 30% 96.1%;
+      --accent-foreground: 271 39% 35%;
     
       --destructive: 0 84.2% 60.2%;
       --destructive-foreground: 0 0% 98%;
 
-      --border: 214.3 31.8% 91.4%;
-      --input: 214.3 31.8% 91.4%;
+      --border: 271 20% 91.4%; /* Lighter Purple for borders */
+      --input: 271 20% 91.4%;
       --ring: 145 58% 52%; /* Emerald Green for focus rings */
     
       --radius: 0.5rem;
+
+      /* Custom color variables for direct use */
+      --emerald-green: #2ecc71;
+      --deep-purple: #5D3A9B; /* Main purple tone, can adjust HSL if needed */
+      --amethyst-purple: #8e44ad; /* Alternative purple, slightly brighter */
+      --light-purple: #c39bd3;
+      --white-pure: #ffffff;
     }
 
     .dark {
       /* Define dark mode colors if needed, for now keeping it light */
-      --background: 222.2 47.4% 11.2%; /* Dark Blue */
+      --background: 271 39% 15%; /* Dark Purple */
       --foreground: 0 0% 98%; /* Almost White */
 
-      --card: 222.2 47.4% 15.2%; /* Slightly lighter dark blue */
+      --card: 271 39% 20%; /* Slightly lighter dark purple */
       --card-foreground: 0 0% 98%;
     
-      --popover: 222.2 47.4% 11.2%;
+      --popover: 271 39% 15%;
       --popover-foreground: 0 0% 98%;
     
       --primary: 145 58% 52%; /* Emerald Green */
       --primary-foreground: 0 0% 98%;
     
-      --secondary: 217.2 32.6% 17.5%;
+      --secondary: 271 30% 22.5%; /* Darker grayish purple */
       --secondary-foreground: 0 0% 98%;
     
-      --muted: 217.2 32.6% 17.5%;
-      --muted-foreground: 215 20.2% 65.1%;
+      --muted: 271 30% 22.5%;
+      --muted-foreground: 271 10% 65.1%; /* Muted light purple for dark mode */
     
-      --accent: 217.2 32.6% 17.5%;
+      --accent: 271 30% 22.5%;
       --accent-foreground: 0 0% 98%;
     
       --destructive: 0 62.8% 30.6%;
       --destructive-foreground: 0 0% 98%;
 
-      --border: 217.2 32.6% 17.5%;
-      --input: 217.2 32.6% 17.5%;
+      --border: 271 30% 22.5%;
+      --input: 271 30% 22.5%;
       --ring: 145 58% 52%;
     }
 
@@ -75,4 +81,3 @@
     h1, h2, h3, h4, h5, h6 {
       @apply font-bold;
     }
-  

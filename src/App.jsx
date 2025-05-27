@@ -20,7 +20,7 @@ import React from 'react';
       };
 
       return (
-        <div className="flex flex-col min-h-screen bg-white text-[#34495e]">
+        <div className="flex flex-col min-h-screen bg-white text-[hsl(var(--foreground))]">
           <ScrollToTop />
           <Toaster />
           <Header />

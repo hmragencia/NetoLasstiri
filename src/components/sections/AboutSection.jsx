@@ -5,35 +5,43 @@ import React from 'react';
       return (
         <motion.section
           id="sobre-mí"
-          className="py-16 md:py-24 bg-gray-50"
+          className="py-16 md:py-24 bg-gradient-to-br from-gray-50 to-slate-100"
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.2 }}
           variants={variants}
         >
-          <div className="container mx-auto px-6">
-            <h2 className="text-4xl font-bold text-center mb-12 text-[#34495e]">Sobre Neto Lasstiri</h2>
-            <motion.div
-              className="max-w-3xl mx-auto"
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              <p className="text-lg mb-6 leading-relaxed text-center md:text-left">
-                Neto Lasstiri es un hipnoterapeuta apasionado y dedicado, especializado en hipnosis regresiva y bienestar integral. Con años de experiencia, Neto ayuda a las personas a superar bloqueos emocionales, conectar con su ser interior y alcanzar una vida plena y equilibrada.
-              </p>
-              <p className="text-lg mb-6 leading-relaxed text-center md:text-left">
-                Su enfoque combina técnicas avanzadas de hipnosis con un profundo entendimiento del bienestar físico y emocional, ofreciendo un camino transformador hacia la mejor versión de ti mismo.
-              </p>
-              <h3 className="text-2xl font-semibold text-[#2ecc71] mb-4 text-center md:text-left">Certificaciones y Formación</h3>
-              <ul className="list-disc list-inside space-y-2 text-lg mx-auto md:mx-0 max-w-md">
-                <li>Certificación Internacional en Hipnosis Regresiva</li>
-                <li>Especialización en Terapias de Bienestar Emocional</li>
-                <li>Formación Avanzada en Programación Neurolingüística (PNL)</li>
-                <li>Diplomado en Nutrición y Fitness Holístico</li>
-              </ul>
-            </motion.div>
+          <div className="container mx-auto px-4 sm:px-6">
+            <div className="max-w-3xl mx-auto text-center">
+              <motion.h2 
+                className="text-3xl sm:text-4xl font-bold text-[var(--deep-purple)] mb-6 sm:mb-8"
+                variants={variants}
+              >
+                Sobre Neto Lasstiri
+              </motion.h2>
+              <motion.p 
+                className="text-lg sm:text-xl text-gray-700 leading-relaxed mb-6"
+                variants={variants}
+              >
+                Neto Lasstiri es un hipnoterapeuta especializado con una profunda pasión por guiar a las personas hacia su transformación integral. Con años de experiencia en hipnosis regresiva, ayuda a sus clientes a liberar bloqueos emocionales, conectar con su ser interior y redescubrir su potencial innato.
+              </motion.p>
+              <motion.p 
+                className="text-lg sm:text-xl text-gray-700 leading-relaxed mb-8 sm:mb-10"
+                variants={variants}
+              >
+                Además de su trabajo con la hipnosis, Neto diseña planes personalizados de bienestar físico y emocional, enfocados en la longevidad y la vitalidad. Su enfoque holístico integra mente, cuerpo y espíritu para alcanzar una evolución completa y sostenible.
+              </motion.p>
+              
+              <motion.div variants={variants}>
+                <h3 className="text-2xl sm:text-3xl font-semibold text-[var(--deep-purple)] mb-4">Certificaciones y Formación</h3>
+                <ul className="list-disc list-inside text-left text-gray-600 space-y-2 text-base sm:text-lg max-w-md mx-auto">
+                  <li>Hipnoterapeuta Certificado en Hipnosis Regresiva</li>
+                  <li>Especialista en Bienestar Integral y Coaching de Salud</li>
+                  <li>Formación Avanzada en Técnicas de Liberación Emocional</li>
+                  <li>Certificación en Programación Neurolingüística (PNL)</li>
+                </ul>
+              </motion.div>
+            </div>
           </div>
         </motion.section>
       );
