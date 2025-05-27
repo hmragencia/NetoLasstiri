@@ -28,8 +28,8 @@ import React from 'react';
         ],
         icon: User,
         color: 'var(--emerald-green)',
-        imageUrl: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80',
-        imageAlt: 'Persona meditando en un entorno sereno representando la hipnosis regresiva'
+        imageUrl: 'src/img/Hipnosis regresiva.jpeg',
+        imageAlt: 'Conexión profunda representando la hipnosis regresiva'
       },
       'planes-fitness-wellness': {
         title: 'Planes Fitness/Wellness',

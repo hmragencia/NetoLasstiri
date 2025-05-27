@@ -56,7 +56,7 @@ import React from 'react';
                 className="bg-white text-[var(--amethyst-purple)] hover:bg-gray-100 hover:text-[var(--deep-purple)] transition-all duration-300 transform hover:scale-105 shadow-lg text-base sm:text-lg px-8 sm:px-10 py-3 sm:py-4"
               >
                 <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2.5">
-                  <Send size={20} smSize={22} /> Agenda tu sesión gratuita
+                  <Send size={20} smSize={22} /> Agenda tu sesión
                 </a>
               </Button>
             </motion.div>
